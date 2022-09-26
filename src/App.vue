@@ -1,12 +1,16 @@
 <template>
     <div id="app">
+        <MainHeader />
         <MainContent :albums="albumData" />
+        <MainLoader v-if="loading" />
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import MainContent from "./components/primary/MainContent.vue";
+import MainHeader from "./components/primary/MainHeader.vue";
+import MainLoader from "./components/primary/MainLoader.vue";
 
 export default {
     name: "App",
@@ -17,7 +21,7 @@ export default {
             loading: true,
         };
     },
-    components: { MainContent },
+    components: { MainContent, MainHeader, MainLoader },
     created() {
         /////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////// Recupera i dati dall'API
@@ -47,11 +51,24 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+
+    background-color: #1e2d3b;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: "M PLUS Rounded 1c", sans-serif;
 }
 </style>

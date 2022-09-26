@@ -1,11 +1,13 @@
 <template>
-    <figure>
-        <img :src="poster" :alt="title" />
-        <h1>{{ title }}</h1>
-        <h2>{{ author }}</h2>
-        <h2>{{ genre }}</h2>
-        <h2>{{ year }}</h2>
-    </figure>
+    <div class="card">
+        <figure>
+            <img :src="poster" :alt="title" />
+            <h1>{{ title }}</h1>
+            <h2>{{ author }}</h2>
+            <!--  <h2>{{ genre }}</h2> -->
+            <h2>{{ year }}</h2>
+        </figure>
+    </div>
 </template>
 
 <script>
@@ -22,28 +24,47 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.content {
-    width: 100%;
-    background-color: rgb(96, 186, 186);
-}
-
 .card {
-    background-color: red;
-    margin: 2rem;
+    width: calc(100% / 5);
+
+    @media only screen and (max-width: 1000px) {
+        width: calc(100% / 4);
+    }
+    @media only screen and (max-width: 700px) {
+        width: calc(100% / 3);
+    }
+    @media only screen and (max-width: 500px) {
+        width: calc(100% / 2);
+    }
+    @media only screen and (max-width: 400px) {
+        width: 100%;
+    }
 }
 
 figure {
-    display: flex;
-    flex-direction: column;
-
-    width: calc(100% / 6);
+    /*  display: flex;
+    flex-direction: column; */
 
     background-color: #2d3a46;
+
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1.1rem;
+
+    img {
+        width: 100%;
+    }
 
     h1 {
         color: white;
         font-size: 1rem;
         text-transform: uppercase;
+        padding: 1rem;
+    }
+
+    h2 {
+        color: rgb(184, 172, 172);
+        font-size: 0.8rem;
     }
 }
 </style>

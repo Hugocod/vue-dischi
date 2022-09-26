@@ -19,8 +19,14 @@ export default {
 
 <style scoped lang="scss">
 .content {
-    width: 100%;
-    background-color: #1e2d3b;
+    padding-top: 7rem;
+    min-height: 100vh;
+    width: 70%;
+    margin: 0 auto;
+
+    @media only screen and (max-width: 1000px) {
+        width: 100%;
+    }
 
     display: flex;
     flex-wrap: wrap;
