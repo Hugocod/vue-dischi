@@ -27,7 +27,7 @@ export default {
 .card {
     width: calc(100% / 5);
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1100px) {
         width: calc(100% / 4);
     }
     @media only screen and (max-width: 700px) {
@@ -59,7 +59,7 @@ figure {
         color: white;
         font-size: 1rem;
         text-transform: uppercase;
-        padding: 1rem;
+        padding: 1rem 0;
     }
 
     h2 {

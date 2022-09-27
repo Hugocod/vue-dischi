@@ -24,7 +24,7 @@ export default {
     width: 70%;
     margin: 0 auto;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1100px) {
         width: 100%;
     }
 
