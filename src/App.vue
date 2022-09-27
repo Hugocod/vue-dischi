@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <MainHeader @genreIsChanged="takeGenre($event)" />
-        <MainContent :albums="albumData" />
+        <MainHeader @genreIsChanged="getUserGenre($event)" />
+        <MainContent :albums="filterByGenre" />
         <MainLoader v-if="loading" />
     </div>
 </template>
@@ -17,9 +17,10 @@ export default {
     data() {
         return {
             albumData: [],
+            filteredAlbums: [],
             dataUrl: "https://flynn.boolean.careers/exercises/api/array/",
             loading: true,
-            indexGenre: "ciao",
+            userGenre: "All",
         };
     },
     components: { MainContent, MainHeader, MainLoader },
@@ -32,7 +33,6 @@ export default {
                 this.loading = false;
                 if (status === 200) {
                     this.albumData = data.response;
-                    console.log(data);
                 }
             })
             .catch((error) => {
@@ -43,8 +43,34 @@ export default {
         /////////////////////////////////////////////////////////////////////////
     },
     methods: {
-        takeGenre: function (e) {
-            console.log(e);
+        getUserGenre: function (userChoice) {
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
+            this.userGenre = userChoice;
+            this.filteredAlbums = [];
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
+        },
+    },
+
+    computed: {
+        filterByGenre: function () {
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
+
+            this.albumData.forEach((album) => {
+                if (this.userGenre === "All") {
+                    this.filteredAlbums = this.albumData;
+                } else if (album.genre === this.userGenre) {
+                    this.filteredAlbums.push(album);
+                } else {
+                    return null;
+                }
+            });
+
+            return this.filteredAlbums;
+            /////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
         },
     },
 };
