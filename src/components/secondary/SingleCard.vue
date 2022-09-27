@@ -1,10 +1,10 @@
 <template>
     <div class="card">
         <figure>
-            <img :src="poster" :alt="title" />
+            <!-- il ternario serve a correggere l'errore nella API -->
+            <img :src="poster === 'https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg' ? 'http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png' : poster" :alt="title" />
             <h1>{{ title }}</h1>
             <h2>{{ author }}</h2>
-            <!--  <h2>{{ genre }}</h2> -->
             <h2>{{ year }}</h2>
         </figure>
     </div>

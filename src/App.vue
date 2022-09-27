@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <MainHeader />
+        <MainHeader @genreIsChanged="takeGenre($event)" />
         <MainContent :albums="albumData" />
         <MainLoader v-if="loading" />
     </div>
@@ -16,9 +16,10 @@ export default {
     name: "App",
     data() {
         return {
-            albumData: "",
+            albumData: [],
             dataUrl: "https://flynn.boolean.careers/exercises/api/array/",
             loading: true,
+            indexGenre: "ciao",
         };
     },
     components: { MainContent, MainHeader, MainLoader },
@@ -40,6 +41,11 @@ export default {
             });
         /////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////
+    },
+    methods: {
+        takeGenre: function (e) {
+            console.log(e);
+        },
     },
 };
 </script>
